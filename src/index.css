@@ -1,9 +1,9 @@
 :root {
   /* Colors */
-  --bg-primary: #080d1a;
-  --bg-secondary: #0e1726;
-  --bg-card: rgba(14, 23, 38, 0.6);
-  --bg-card-hover: rgba(20, 32, 54, 0.8);
+  --bg-primary: #030712; /* Richer dark */
+  --bg-secondary: #0b1120;
+  --bg-card: rgba(255, 255, 255, 0.02); /* Glassmorphism base */
+  --bg-card-hover: rgba(255, 255, 255, 0.05);
   
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
@@ -16,10 +16,11 @@
   --accent-green: #34d399; /* Green/IoT */
   --accent-green-rgb: 52, 211, 153;
   
-  --border: rgba(148, 163, 184, 0.1);
-  --border-hover: rgba(34, 211, 238, 0.3);
+  --border: rgba(255, 255, 255, 0.06);
+  --border-hover: rgba(255, 255, 255, 0.15);
   
-  --shadow: rgba(0, 0, 0, 0.5) 0 10px 30px -15px;
+  --shadow: rgba(0, 0, 0, 0.7) 0 20px 40px -15px;
+  --shadow-hover: rgba(34, 211, 238, 0.25) 0 20px 40px -10px;
   
   /* Fonts */
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;

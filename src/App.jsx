@@ -3,7 +3,23 @@ import './App.css';
 
 function App() {
   const [activeSection, setActiveSection] = useState('about');
-  const terminalEndRef = useRef(null);
+  const terminalBodyRef = useRef(null);
+
+  const [slogan, setSlogan] = useState('');
+  const fullSlogan = "Building Secure Infrastructure for a Connected World.";
+
+  useEffect(() => {
+    let i = 0;
+    const typingInterval = setInterval(() => {
+      if (i < fullSlogan.length) {
+        setSlogan(fullSlogan.substring(0, i + 1));
+        i++;
+      } else {
+        clearInterval(typingInterval);
+      }
+    }, 50);
+    return () => clearInterval(typingInterval);
+  }, []);
 
   // 1. Mouse Glow / Spotlight effect
   useEffect(() => {
@@ -66,8 +82,8 @@ function App() {
 
   // Auto-scroll terminal to bottom
   useEffect(() => {
-    if (terminalEndRef.current) {
-      terminalEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    if (terminalBodyRef.current) {
+      terminalBodyRef.current.scrollTop = terminalBodyRef.current.scrollHeight;
     }
   }, [terminalHistory]);
 
@@ -160,11 +176,10 @@ function App() {
           <div className="profile-info">
             <h1 className="profile-name">David Muhaimin</h1>
             <div className="profile-title">
-              Infrastructure & Security Engineer
-              <span className="profile-title-tag">Student</span>
+              Computer Engineering Student
             </div>
             <p className="profile-tagline">
-              Membangun infrastruktur server yang aman, terotomatisasi, serta merancang sistem IoT terintegrasi.
+              {slogan}<span className="slogan-caret"></span>
             </p>
 
             {/* ScrollSpy Navigation Links */}
@@ -176,14 +191,15 @@ function App() {
                 { id: 'projects', label: 'Projects' },
                 { id: 'blog', label: 'Blog' },
                 { id: 'certifications', label: 'Certifications' },
-              ].map((item) => (
+              ].map((item, index) => (
                 <div
                   key={item.id}
                   className={`nav-item ${activeSection === item.id ? 'active' : ''}`}
                   onClick={() => scrollToSection(item.id)}
                 >
-                  <span className="nav-line"></span>
-                  <span>{item.label}</span>
+                  <span className="nav-num">0{index + 1}</span>
+                  <div className="nav-indicator"></div>
+                  <span className="nav-text">{item.label}</span>
                 </div>
               ))}
             </nav>
@@ -222,6 +238,18 @@ function App() {
                 <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
               </svg>
             </a>
+            
+            <a 
+              href="/resume.pdf" 
+              className="download-cv-btn" 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              <span>Download CV</span>
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+              </svg>
+            </a>
           </div>
         </header>
 
@@ -233,10 +261,7 @@ function App() {
             <h2 className="section-title-mobile">About</h2>
             <div className="about-text">
               <p>
-                Halo! Saya <strong>David Muhaimin</strong>, mahasiswa program studi Teknologi Rekayasa Komputer yang sangat tertarik dengan ekosistem <strong className="highlight-cyan">Infrastructure Engineering</strong> dan <strong className="highlight-purple">Security Engineering</strong>. Saya fokus mempelajari bagaimana cara merancang, menerapkan, serta mengamankan layanan server dan infrastruktur jaringan baik secara lokal (Homelab) maupun cloud.
-              </p>
-              <p>
-                Ketertarikan saya dimulai sejak mengeksplorasi virtualisasi dan containerization, di mana saya menyadari bahwa efisiensi server harus berjalan beriringan dengan postur keamanan yang ketat. Sejak saat itu, saya aktif membangun laboratorium pribadi (Homelab), melakukan hardening pada port-port server, menyusun sistem monitoring untuk IoT, dan menerapkan arsitektur jaringan berbasis Zero Trust.
+                I'm a Computer Engineering Technology student passionate about designing secure, reliable, and automated <strong className="highlight-cyan">infrastructure</strong>. My interests span Linux, networking, cloud, automation, and <strong className="highlight-purple">cybersecurity</strong>, where I continuously build practical experience through homelabs and real-world projects.
               </p>
             </div>
 
@@ -248,16 +273,16 @@ function App() {
                   <div className="terminal-btn yellow"></div>
                   <div className="terminal-btn green"></div>
                 </div>
-                <span className="terminal-title">david@dapit-sh:~</span>
+                <span className="terminal-title">dapit@netphantom:~</span>
                 <div style={{ width: 42 }}></div>
               </div>
-              <div className="terminal-body">
+              <div className="terminal-body" ref={terminalBodyRef}>
                 {terminalHistory.map((line, idx) => (
                   <div key={idx} className="terminal-line">
                     {line.type === 'input' ? (
                       <>
                         <span className="terminal-prompt-prefix">
-                          <span className="terminal-user">dapitsh</span>@guest:~$
+                          <span className="terminal-user">dapit</span>@netphantom:~$
                         </span>
                         <span>{line.text}</span>
                       </>
@@ -268,7 +293,7 @@ function App() {
                 ))}
                 <form onSubmit={handleTerminalSubmit} className="terminal-input-container">
                   <span className="terminal-prompt-prefix">
-                    <span className="terminal-user">dapitsh</span>@guest:~$
+                    <span className="terminal-user">dapit</span>@netphantom:~$
                   </span>
                   <input
                     type="text"
@@ -280,9 +305,7 @@ function App() {
                     autoComplete="off"
                     spellCheck="false"
                   />
-                  <span className="terminal-caret"></span>
                 </form>
-                <div ref={terminalEndRef} />
               </div>
             </div>
           </section>
@@ -296,19 +319,12 @@ function App() {
                 <div className="card-left">2025 — Present</div>
                 <div className="card-right">
                   <h3 className="card-title">
-                    Lead Infrastructure Admin <span className="card-arrow">↗</span>
+                    Lead Infrastructure Admin
                   </h3>
                   <div className="card-subtitle">Student Laboratory Group</div>
                   <p className="card-description">
                     Mengelola server virtualisasi berbasis Proxmox untuk kebutuhan deployment praktikum mahasiswa. Melakukan konfigurasi reverse proxy (Traefik) dan automasi backup database mingguan menggunakan shell script dan cron jobs.
                   </p>
-                  <div className="badge-list">
-                    <span className="badge">Linux</span>
-                    <span className="badge">Proxmox</span>
-                    <span className="badge">Traefik</span>
-                    <span className="badge">Shell Scripting</span>
-                    <span className="badge">Docker</span>
-                  </div>
                 </div>
               </div>
 
@@ -316,19 +332,12 @@ function App() {
                 <div className="card-left">2024 — 2025</div>
                 <div className="card-right">
                   <h3 className="card-title">
-                    IoT Network Designer <span className="card-arrow">↗</span>
+                    IoT Network Designer
                   </h3>
                   <div className="card-subtitle">Freelance & Academic Projects</div>
                   <p className="card-description">
                     Merancang jaringan transmisi data sensor IoT dengan protokol MQTT. Mengimplementasikan autentikasi TLS pada broker Mosquitto untuk melindungi payload sensor dari ancaman Eavesdropping dan Man-In-The-Middle (MITM) attacks.
                   </p>
-                  <div className="badge-list">
-                    <span className="badge green">IoT</span>
-                    <span className="badge">MQTT</span>
-                    <span className="badge">ESP32</span>
-                    <span className="badge">Node-RED</span>
-                    <span className="badge">TLS/SSL</span>
-                  </div>
                 </div>
               </div>
 
@@ -344,18 +353,13 @@ function App() {
                 <div className="card-left">2023 — Present</div>
                 <div className="card-right">
                   <h3 className="card-title">
-                    Sarjana Terapan (D4) Teknologi Rekayasa Komputer <span className="card-arrow">↗</span>
+                    Sarjana Terapan (D4) Teknologi Rekayasa Komputer
                   </h3>
                   <div className="card-subtitle">Politeknik Negeri</div>
                   <p className="card-description">
                     Mempelajari arsitektur jaringan komputer modern, sistem operasi server (Windows & Linux), pemrograman embedded system, serta prinsip pertahanan siber (defensive cybersecurity). Aktif dalam riset mengenai keamanan IoT dan optimasi server.
                   </p>
-                  <div className="badge-list">
-                    <span className="badge">Computer Networking</span>
-                    <span className="badge">Operating Systems</span>
-                    <span className="badge">Embedded IoT</span>
-                    <span className="badge">Cyber Security</span>
-                  </div>
+
                 </div>
               </div>
 
@@ -371,18 +375,12 @@ function App() {
                 <div className="card-left">IoT System</div>
                 <div className="card-right">
                   <h3 className="card-title">
-                    Secured Smart Home Monitoring Gateway <span className="card-arrow">↗</span>
+                    Secured Smart Home Monitoring Gateway
                   </h3>
                   <p className="card-description">
                     Sistem pemantau kondisi rumah pintar menggunakan ESP32 dan Raspberry Pi 4. Komunikasi data diamankan secara end-to-end menggunakan sertifikat TLS kustom, kemudian divisualisasikan melalui dashboard real-time Grafana yang diproteksi autentikasi 2FA.
                   </p>
-                  <div className="badge-list">
-                    <span className="badge green">IoT</span>
-                    <span className="badge">Raspberry Pi</span>
-                    <span className="badge">ESP32</span>
-                    <span className="badge">Grafana</span>
-                    <span className="badge">InfluxDB</span>
-                  </div>
+
                 </div>
               </div>
 
@@ -390,18 +388,12 @@ function App() {
                 <div className="card-left">Setup Server</div>
                 <div className="card-right">
                   <h3 className="card-title">
-                    Zero Trust HomeLab Hypervisor Setup <span className="card-arrow">↗</span>
+                    Zero Trust HomeLab Hypervisor Setup
                   </h3>
                   <p className="card-description">
                     Penerapan konsep Zero Trust Network Access (ZTNA) di jaringan homelab. Menggunakan Cloudflare Tunnels untuk mengekspos dashboard container lokal ke internet publik tanpa membuka open ports (NAT) pada router utama, diamankan dengan filter IP dan SSO.
                   </p>
-                  <div className="badge-list">
-                    <span className="badge">Zero Trust</span>
-                    <span className="badge">Cloudflare Tunnels</span>
-                    <span className="badge">OPNsense</span>
-                    <span className="badge">WireGuard</span>
-                    <span className="badge">Docker</span>
-                  </div>
+
                 </div>
               </div>
 
@@ -409,17 +401,12 @@ function App() {
                 <div className="card-left">Website</div>
                 <div className="card-right">
                   <h3 className="card-title">
-                    Minimalist Responsive Terminal Portfolio <span className="card-arrow">↗</span>
+                    Minimalist Responsive Terminal Portfolio
                   </h3>
                   <p className="card-description">
                     Aplikasi web portofolio interaktif dengan tampilan modern dua kolom, dilengkapi widget terminal emulator interaktif berbasis React. Dibuat dengan performa tinggi tanpa dependensi framework CSS yang berat (Vanilla CSS).
                   </p>
-                  <div className="badge-list">
-                    <span className="badge purple">React</span>
-                    <span className="badge purple">Vite</span>
-                    <span className="badge purple">Vanilla CSS</span>
-                    <span className="badge purple">JavaScript</span>
-                  </div>
+
                 </div>
               </div>
 
@@ -435,16 +422,12 @@ function App() {
                 <div className="card-left">Jul 2026</div>
                 <div className="card-right">
                   <h3 className="card-title">
-                    Hardening Server Linux: Panduan Awal Bagi Sysadmin Pemula <span className="card-arrow">↗</span>
+                    Hardening Server Linux: Panduan Awal Bagi Sysadmin Pemula
                   </h3>
                   <p className="card-description">
                     Langkah-langkah praktis memperkuat pertahanan server Linux Anda setelah fresh install, mulai dari menonaktifkan SSH root login, setup SSH key-based auth, mengaktifkan UFW/Fail2ban, hingga integrasi log auditd.
                   </p>
-                  <div className="badge-list">
-                    <span className="badge">Security</span>
-                    <span className="badge">Linux Hardening</span>
-                    <span className="badge">Sysadmin</span>
-                  </div>
+
                 </div>
               </div>
 
@@ -452,16 +435,12 @@ function App() {
                 <div className="card-left">May 2026</div>
                 <div className="card-right">
                   <h3 className="card-title">
-                    Mengenal Perbedaan SSH Tunneling vs WireGuard VPN untuk Homelab <span className="card-arrow">↗</span>
+                    Mengenal Perbedaan SSH Tunneling vs WireGuard VPN untuk Homelab
                   </h3>
                   <p className="card-description">
                     Komparasi mendalam antara tunnel port forwarding dan VPN Layer-3. Membedah performa enkripsi ChaCha20 pada WireGuard versus enkripsi default OpenSSH untuk kebutuhan remote access homelab.
                   </p>
-                  <div className="badge-list">
-                    <span className="badge">Networking</span>
-                    <span className="badge">WireGuard</span>
-                    <span className="badge">Cryptography</span>
-                  </div>
+
                 </div>
               </div>
 
@@ -515,14 +494,20 @@ function App() {
             </div>
           </section>
 
+
           {/* FOOTER */}
-          <footer className="footer-text">
-            <p>
-              Dibuat menggunakan <a href="https://react.dev/" target="_blank" rel="noreferrer">React</a>, <a href="https://vite.dev/" target="_blank" rel="noreferrer">Vite</a>, dan <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" rel="noreferrer">Vanilla CSS</a>. Terinspirasi oleh desain web <a href="https://brittanychiang.com/" target="_blank" rel="noreferrer">Brittany Chiang</a>.
-            </p>
-            <p style={{ marginTop: 8 }}>
-              &copy; {new Date().getFullYear()} David Muhaimin. All rights reserved.
-            </p>
+          <footer className="professional-footer">
+            <div className="footer-content">
+              <p className="footer-code">
+                <span>[</span> david-muhaimin <span>]</span> ~ <span>$</span> exit
+              </p>
+              <p className="footer-text">
+                Designed & Built with <span className="highlight">React</span> by David Muhaimin.
+              </p>
+              <p className="footer-copyright">
+                &copy; {new Date().getFullYear()} All rights reserved.
+              </p>
+            </div>
           </footer>
 
         </main>
