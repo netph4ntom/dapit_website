@@ -6,7 +6,7 @@ function App() {
   const terminalBodyRef = useRef(null);
 
   const [slogan, setSlogan] = useState('');
-  const fullSlogan = "Building Secure Infrastructure for a Connected World.";
+  const fullSlogan = "Building Secure & Reliable Infrastructure.";
 
   useEffect(() => {
     let i = 0;
@@ -56,7 +56,7 @@ function App() {
     };
 
     window.addEventListener('scroll', handleScroll);
-    
+
     // Run initially (with a small timeout to let the page layout and heights stabilize)
     const timeoutId = setTimeout(handleScroll, 100);
 
@@ -145,9 +145,9 @@ function App() {
       case 'contact':
         output = [
           { type: 'output', text: 'Connect with me:' },
-          { type: 'output', text: '  Email:    davidmuhaimin@example.com' },
-          { type: 'output', text: '  GitHub:   github.com/davidmuhaimin' },
-          { type: 'output', text: '  LinkedIn: linkedin.com/in/davidmuhaimin' },
+          { type: 'output', text: '  Email:    davidmuhaimin.1@gmail.com' },
+          { type: 'output', text: '  Phone:    0821-3940-7823' },
+          { type: 'output', text: '  Website:  netphantom.myid' },
         ];
         break;
       case 'clear':
@@ -189,7 +189,6 @@ function App() {
                 { id: 'experience', label: 'Experience' },
                 { id: 'education', label: 'Education' },
                 { id: 'projects', label: 'Projects' },
-                { id: 'blog', label: 'Blog' },
                 { id: 'certifications', label: 'Certifications' },
               ].map((item, index) => (
                 <div
@@ -197,7 +196,6 @@ function App() {
                   className={`nav-item ${activeSection === item.id ? 'active' : ''}`}
                   onClick={() => scrollToSection(item.id)}
                 >
-                  <span className="nav-num">0{index + 1}</span>
                   <div className="nav-indicator"></div>
                   <span className="nav-text">{item.label}</span>
                 </div>
@@ -230,7 +228,7 @@ function App() {
               </svg>
             </a>
             <a
-              href="mailto:davidmuhaimin@example.com"
+              href="mailto:davidmuhaimin.1@gmail.com"
               className="social-icon"
               aria-label="Email Me"
             >
@@ -238,16 +236,16 @@ function App() {
                 <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
               </svg>
             </a>
-            
-            <a 
-              href="/resume.pdf" 
-              className="download-cv-btn" 
-              target="_blank" 
+
+            <a
+              href="/resume.pdf"
+              className="download-cv-btn"
+              target="_blank"
               rel="noopener noreferrer"
             >
               <span>Download CV</span>
               <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
               </svg>
             </a>
           </div>
@@ -255,7 +253,7 @@ function App() {
 
         {/* RIGHT COLUMN: Scrollable Sections */}
         <main className="right-panel">
-          
+
           {/* ABOUT SECTION */}
           <section id="about" className="section-container animate-fade-in">
             <h2 className="section-title-mobile">About</h2>
@@ -314,29 +312,16 @@ function App() {
           <section id="experience" className="section-container">
             <h2 className="section-title-mobile">Experience</h2>
             <div className="card-list">
-              
-              <div className="card-item">
-                <div className="card-left">2025 — Present</div>
-                <div className="card-right">
-                  <h3 className="card-title">
-                    Lead Infrastructure Admin
-                  </h3>
-                  <div className="card-subtitle">Student Laboratory Group</div>
-                  <p className="card-description">
-                    Mengelola server virtualisasi berbasis Proxmox untuk kebutuhan deployment praktikum mahasiswa. Melakukan konfigurasi reverse proxy (Traefik) dan automasi backup database mingguan menggunakan shell script dan cron jobs.
-                  </p>
-                </div>
-              </div>
 
               <div className="card-item">
-                <div className="card-left">2024 — 2025</div>
+                <div className="card-left">Des 2022</div>
                 <div className="card-right">
                   <h3 className="card-title">
-                    IoT Network Designer
+                    Network Technician
                   </h3>
-                  <div className="card-subtitle">Freelance & Academic Projects</div>
+                  <div className="card-subtitle">INETmedia RT/RW Net</div>
                   <p className="card-description">
-                    Merancang jaringan transmisi data sensor IoT dengan protokol MQTT. Mengimplementasikan autentikasi TLS pada broker Mosquitto untuk melindungi payload sensor dari ancaman Eavesdropping dan Man-In-The-Middle (MITM) attacks.
+                    Melakukan instalasi dan konfigurasi jaringan FTTH, termasuk pemasangan ONU, UDP, dan fiber optic untuk pelanggan baru. Melaksanakan troubleshooting dan maintenance infrastruktur jaringan secara rutin untuk memastikan koneksi stabil, serta memberikan layanan customer service dengan menangani keluhan teknis secara langsung.
                   </p>
                 </div>
               </div>
@@ -350,16 +335,28 @@ function App() {
             <div className="card-list">
 
               <div className="card-item">
-                <div className="card-left">2023 — Present</div>
+                <div className="card-left">Aug 2024 — Present</div>
                 <div className="card-right">
                   <h3 className="card-title">
                     Sarjana Terapan (D4) Teknologi Rekayasa Komputer
                   </h3>
-                  <div className="card-subtitle">Politeknik Negeri</div>
+                  <div className="card-subtitle">Politeknik Negeri Banyuwangi</div>
                   <p className="card-description">
-                    Mempelajari arsitektur jaringan komputer modern, sistem operasi server (Windows & Linux), pemrograman embedded system, serta prinsip pertahanan siber (defensive cybersecurity). Aktif dalam riset mengenai keamanan IoT dan optimasi server.
+                    Fokus pada pengembangan infrastruktur jaringan, IoT, dan keamanan sistem. Meraih IPK 3.78. Aktif berorganisasi sebagai Anggota Divisi HUMAS Forbimwangi (2024-2025) dan Wakil Ketua Umum Forbimwangi (2025-2026).
                   </p>
+                </div>
+              </div>
 
+              <div className="card-item">
+                <div className="card-left">Juli 2021 — Juni 2024</div>
+                <div className="card-right">
+                  <h3 className="card-title">
+                    Teknologi Komputer dan Jaringan
+                  </h3>
+                  <div className="card-subtitle">SMKS Darussalam Blokagung</div>
+                  <p className="card-description">
+                    Mempelajari pondasi jaringan komputer, perangkat keras, dan administrasi dasar. Mengembangkan kemampuan kepemimpinan sebagai Ketua 1 OSIS pada periode 2022-2023.
+                  </p>
                 </div>
               </div>
 
@@ -372,75 +369,62 @@ function App() {
             <div className="card-list">
 
               <div className="card-item">
-                <div className="card-left">IoT System</div>
+                <div className="card-left">Sysadmin</div>
                 <div className="card-right">
                   <h3 className="card-title">
-                    Secured Smart Home Monitoring Gateway
+                    Linux Web Server Deployment & Hardening
                   </h3>
                   <p className="card-description">
-                    Sistem pemantau kondisi rumah pintar menggunakan ESP32 dan Raspberry Pi 4. Komunikasi data diamankan secara end-to-end menggunakan sertifikat TLS kustom, kemudian divisualisasikan melalui dashboard real-time Grafana yang diproteksi autentikasi 2FA.
+                    Membangun dan mengkonfigurasi LAMP & LEMP Stack di VPS berbasis Ubuntu dan CentOS. Melakukan deployment WordPress serta mengatur SSL/TLS dan basic security hardening untuk meningkatkan keamanan aplikasi dan server.
                   </p>
-
                 </div>
               </div>
 
               <div className="card-item">
-                <div className="card-left">Setup Server</div>
+                <div className="card-left">IoT & Robotics</div>
                 <div className="card-right">
                   <h3 className="card-title">
-                    Zero Trust HomeLab Hypervisor Setup
+                    ROV Control & Telemetry System
                   </h3>
                   <p className="card-description">
-                    Penerapan konsep Zero Trust Network Access (ZTNA) di jaringan homelab. Menggunakan Cloudflare Tunnels untuk mengekspos dashboard container lokal ke internet publik tanpa membuka open ports (NAT) pada router utama, diamankan dengan filter IP dan SSO.
+                    Mengembangkan sistem kendali dan telemetri ROV berbasis Raspberry Pi menggunakan Python dan Linux. Mengimplementasikan komunikasi berbasis UDP dan WebSocket antara Backend dan Frontend, serta mengintegrasikan komunikasi MAVLink antara Raspberry Pi dan Pixhawk.
                   </p>
-
                 </div>
               </div>
 
               <div className="card-item">
-                <div className="card-left">Website</div>
+                <div className="card-left">Networking</div>
                 <div className="card-right">
                   <h3 className="card-title">
-                    Minimalist Responsive Terminal Portfolio
+                    Network & Server Monitoring Lab
                   </h3>
                   <p className="card-description">
-                    Aplikasi web portofolio interaktif dengan tampilan modern dua kolom, dilengkapi widget terminal emulator interaktif berbasis React. Dibuat dengan performa tinggi tanpa dependensi framework CSS yang berat (Vanilla CSS).
+                    Menginstal dan mengonfigurasi Zabbix Server di Ubuntu Server pada lingkungan virtualisasi VMware. Mengintegrasikan Grafana untuk visualisasi data, beserta konfigurasi dashboard dan basic alerting untuk kebutuhan monitoring real-time.
                   </p>
-
-                </div>
-              </div>
-
-            </div>
-          </section>
-
-          {/* BLOG SECTION */}
-          <section id="blog" className="section-container">
-            <h2 className="section-title-mobile">Blog</h2>
-            <div className="card-list">
-
-              <div className="card-item">
-                <div className="card-left">Jul 2026</div>
-                <div className="card-right">
-                  <h3 className="card-title">
-                    Hardening Server Linux: Panduan Awal Bagi Sysadmin Pemula
-                  </h3>
-                  <p className="card-description">
-                    Langkah-langkah praktis memperkuat pertahanan server Linux Anda setelah fresh install, mulai dari menonaktifkan SSH root login, setup SSH key-based auth, mengaktifkan UFW/Fail2ban, hingga integrasi log auditd.
-                  </p>
-
                 </div>
               </div>
 
               <div className="card-item">
-                <div className="card-left">May 2026</div>
+                <div className="card-left">Networking</div>
                 <div className="card-right">
                   <h3 className="card-title">
-                    Mengenal Perbedaan SSH Tunneling vs WireGuard VPN untuk Homelab
+                    Three-Tier Network Architecture di GNS3
                   </h3>
                   <p className="card-description">
-                    Komparasi mendalam antara tunnel port forwarding dan VPN Layer-3. Membedah performa enkripsi ChaCha20 pada WireGuard versus enkripsi default OpenSSH untuk kebutuhan remote access homelab.
+                    Mendesain dan membangun arsitektur jaringan three-tier (core, distribution, access) menggunakan perangkat virtual di GNS3. Melakukan konfigurasi Routing, VLAN, network automation, serta mengimplementasikan keamanan dasar dan monitoring trafik untuk simulasi ISP.
                   </p>
+                </div>
+              </div>
 
+              <div className="card-item">
+                <div className="card-left">Web Dev</div>
+                <div className="card-right">
+                  <h3 className="card-title">
+                    Website Perusahaan Travel
+                  </h3>
+                  <p className="card-description">
+                    Membangun website perusahaan travel menggunakan WordPress (banyuwangiijentrip.com). Berkolaborasi dengan tim untuk merancang tampilan dan struktur halaman, serta mengelola konfigurasi hosting, domain, dan optimasi dasar untuk performa website.
+                  </p>
                 </div>
               </div>
 
@@ -453,41 +437,50 @@ function App() {
             <div className="cert-grid">
 
               <div className="cert-card">
-                <div className="cert-icon">
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
-                  </svg>
-                </div>
                 <div className="cert-info">
-                  <h4 className="cert-name">Cisco Certified Network Associate (CCNA)</h4>
-                  <span className="cert-issuer">Cisco</span>
-                  <span className="cert-date">Issued: 2025</span>
+                  <h4 className="cert-name">Computer Networking</h4>
+                  <span className="cert-issuer">BNSP (Badan Nasional Sertifikasi Profesi)</span>
+                  <span className="cert-date">2024</span>
                 </div>
               </div>
 
               <div className="cert-card purple">
-                <div className="cert-icon">
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                    <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
-                  </svg>
-                </div>
                 <div className="cert-info">
-                  <h4 className="cert-name">CompTIA Security+</h4>
-                  <span className="cert-issuer">CompTIA (Exam Prep)</span>
-                  <span className="cert-date">Target: Q4 2026</span>
+                  <h4 className="cert-name">Bootcamp Linux Sysadmin</h4>
+                  <span className="cert-issuer">ID-Networkers</span>
+                  <span className="cert-date">2025</span>
                 </div>
               </div>
 
               <div className="cert-card">
-                <div className="cert-icon">
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                    <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM19 18H6c-2.21 0-4-1.79-4-4 0-2.05 1.53-3.76 3.56-3.97l1.07-.11.5-.95C8.08 7.14 9.94 6 12 6c2.62 0 4.88 1.86 5.39 4.43l.3 1.5 1.53.11c1.56.1 2.78 1.41 2.78 2.96 0 1.65-1.35 3-3 3z" />
-                  </svg>
-                </div>
                 <div className="cert-info">
-                  <h4 className="cert-name">AWS Certified Cloud Practitioner</h4>
-                  <span className="cert-issuer">Amazon Web Services</span>
-                  <span className="cert-date">Issued: 2025</span>
+                  <h4 className="cert-name">Bootcamp Cyber Security</h4>
+                  <span className="cert-issuer">ID-Networkers</span>
+                  <span className="cert-date">2025</span>
+                </div>
+              </div>
+
+              <div className="cert-card purple">
+                <div className="cert-info">
+                  <h4 className="cert-name">OCNA Routing & Switching</h4>
+                  <span className="cert-issuer">TP-Link Systems Inc</span>
+                  <span className="cert-date">2025</span>
+                </div>
+              </div>
+
+              <div className="cert-card">
+                <div className="cert-info">
+                  <h4 className="cert-name">OCNA Wireless</h4>
+                  <span className="cert-issuer">TP-Link Systems Inc</span>
+                  <span className="cert-date">2025</span>
+                </div>
+              </div>
+
+              <div className="cert-card purple">
+                <div className="cert-info">
+                  <h4 className="cert-name">Bootcamp Web Pentest</h4>
+                  <span className="cert-issuer">Cyber Sentinel Secure</span>
+                  <span className="cert-date">2026</span>
                 </div>
               </div>
 

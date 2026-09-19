@@ -7,7 +7,8 @@
   margin: 0 auto;
   padding: 0 48px;
   position: relative;
-  z-index: 2; /* Position above spotlight overlay */
+  z-index: 2;
+  /* Position above spotlight overlay */
 }
 
 /* Sticky Left Panel */
@@ -62,8 +63,10 @@
   font-size: 1rem;
   color: var(--text-secondary);
   max-width: 320px;
-  margin-bottom: 12px; /* Dikurangi agar lebih rapat dengan nav */
-  min-height: 48px; /* Mencegah layout shift saat animasi mengetik berjalan */
+  margin-bottom: 12px;
+  /* Dikurangi agar lebih rapat dengan nav */
+  min-height: 48px;
+  /* Mencegah layout shift saat animasi mengetik berjalan */
 }
 
 .slogan-caret {
@@ -80,8 +83,10 @@
 .nav-links {
   display: flex;
   flex-direction: column;
-  gap: 10px; /* Dikurangi dari 16px */
-  margin: 12px 0 32px 0; /* Margin atas dikurangi untuk mendekatkan dengan teks */
+  gap: 10px;
+  /* Dikurangi dari 16px */
+  margin: 12px 0 32px 0;
+  /* Margin atas dikurangi untuk mendekatkan dengan teks */
 }
 
 .nav-item {
@@ -94,7 +99,8 @@
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); /* Animasi lebih halus */
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  /* Animasi lebih halus */
   cursor: pointer;
   width: fit-content;
 }
@@ -107,7 +113,8 @@
   margin-right: 2px;
 }
 
-.nav-item:hover .nav-num, .nav-item.active .nav-num {
+.nav-item:hover .nav-num,
+.nav-item.active .nav-num {
   color: var(--accent-purple);
 }
 
@@ -121,7 +128,8 @@
   margin-right: 4px;
 }
 
-.nav-item:hover .nav-indicator, .nav-item.active .nav-indicator {
+.nav-item:hover .nav-indicator,
+.nav-item.active .nav-indicator {
   background-color: var(--accent);
   border-color: var(--accent);
   transform: rotate(45deg) scale(1.2);
@@ -516,9 +524,17 @@
   border-radius: 50%;
 }
 
-.terminal-btn.red { background: #ef4444; }
-.terminal-btn.yellow { background: #eab308; }
-.terminal-btn.green { background: #22c55e; }
+.terminal-btn.red {
+  background: #ef4444;
+}
+
+.terminal-btn.yellow {
+  background: #eab308;
+}
+
+.terminal-btn.green {
+  background: #22c55e;
+}
 
 .terminal-title {
   font-size: 0.75rem;
@@ -576,7 +592,9 @@
 }
 
 @keyframes blink {
-  50% { opacity: 0; }
+  50% {
+    opacity: 0;
+  }
 }
 
 /* Footer Section */
@@ -643,7 +661,8 @@
   }
 
   .nav-links {
-    display: none; /* Hide scrollspy nav on mobile devices */
+    display: none;
+    /* Hide scrollspy nav on mobile devices */
   }
 
   .right-panel {
